@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.orgabout{
+    background: rgba(249, 163, 25, 0.06);
+    box-shadow: 10px 5px 34.3px 0px rgba(249, 163, 25, 0.37);
+    border: 1px solid rgba(0, 0, 0, 0.42)
+
+}
+
+.greenabout{
+    background: rgba(30, 157, 104, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    box-shadow: 10px 5px 20.8px 0px rgba(19, 152, 101, 0.32);
+
+}
+
+.img1{
+    box-shadow: 5px 5px 20px 0px rgba(250, 164, 26, 1);  
+}
+
+.img2{
+    box-shadow: 5px 5px 20px 0px rgba(47, 161, 106, 1);
+}
+
+.img3{
+    box-shadow: 5px 5px 20px 0px rgba(0, 86, 125, 1);
+}
+
+.eventcardimg{
+    aspect-ratio: 16/9;
+ 
+}
