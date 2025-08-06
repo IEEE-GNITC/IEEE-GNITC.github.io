@@ -33,7 +33,11 @@ function Team() {
   );
 
   const renderCarousel = (dataArray) => (
-    <Carousel opts={{ align: 'start', loop: false }} plugins={[plugin.current]}>
+    <Carousel
+      key={selectedTeam} // This ensures carousel resets when team changes
+      opts={{ align: 'start', loop: false }}
+      plugins={[plugin.current]}
+    >
       <CarouselContent className="-ml-2">
         {dataArray.map((data, index) => (
           <CarouselItem
@@ -52,55 +56,36 @@ function Team() {
   );
 
   return (
-    <div id="team">
-      <div className="faclty mt-0 w-full min-h-screen overflow-hidden px-4 sm:px-6 lg:px-10 pb-6"> {/* Reduced bottom padding */}
-        {/* Toggle Buttons */}
-        <div className="flex gap-4 justify-center mb-6"> {/* Reduced bottom margin */}
+    <div id="team" className="w-full min-h-screen px-4 sm:px-6 lg:px-10 pb-10 pt-4">
+      {/* Toggle Buttons */}
+      <div className="flex gap-4 justify-center pt-6 mb-10">
+        {['GNITC', 'GNIT'].map((team) => (
           <button
-            onClick={() => setSelectedTeam('GNITC')}
-            className={`px-6 py-2 rounded-xl font-semibold border ${
-              selectedTeam === 'GNITC'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-blue-600'
+            key={team}
+            onClick={() => setSelectedTeam(team)}
+            className={`px-6 py-2 rounded-xl font-semibold border border-white/20 transition-all duration-300 ${
+              selectedTeam === team
+                ? 'bg-white/10 text-white scale-105'
+                : 'bg-white/5 text-white hover:bg-white/10'
             }`}
           >
-            GNITC
+            {team}
           </button>
-          <button
-            onClick={() => setSelectedTeam('GNIT')}
-            className={`px-6 py-2 rounded-xl font-semibold border ${
-              selectedTeam === 'GNIT'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-blue-600'
-            }`}
-          >
-            GNIT
-          </button>
-        </div>
+        ))}
+      </div>
 
-        {/* GNITC Carousel */}
-        {selectedTeam === 'GNITC' && (
-          <>
-            <h2 className="text-white text-2xl md:text-3xl font-semibold mt-4 mb-4 text-left ml-4">
-              TEAM - GNITC
-            </h2>
-            <div className="memcard overflow-hidden mb-4"> {/* Reduced from mb-6 */}
-              {renderCarousel(TeamInfoGNITC)}
-            </div>
-          </>
-        )}
+      {/* Team Section Heading */}
+      <div className="flex justify-center mb-6">
+        <h2 className="text-white text-3xl md:text-4xl font-bold tracking-wide animate-pulse">
+          TEAM - {selectedTeam}
+        </h2>
+      </div>
 
-        {/* GNIT Carousel */}
-        {selectedTeam === 'GNIT' && (
-          <>
-            <h2 className="text-white text-2xl md:text-3xl font-semibold mt-4 mb-4 text-left ml-4">
-              TEAM - GNIT
-            </h2>
-            <div className="memcard overflow-hidden mb-4"> {/* Reduced from mb-6 */}
-              {renderCarousel(TeamInfoGNIT)}
-            </div>
-          </>
-        )}
+      {/* Carousel */}
+      <div className="memcard overflow-hidden mb-8 mt-4 px-1">
+        {selectedTeam === 'GNITC'
+          ? renderCarousel(TeamInfoGNITC)
+          : renderCarousel(TeamInfoGNIT)}
       </div>
     </div>
   );

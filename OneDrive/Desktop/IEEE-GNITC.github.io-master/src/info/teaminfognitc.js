@@ -10,6 +10,8 @@ import yashaswini from "../assets/people/yashaswini.png";
 import balaji from "../assets/people/balaji.png";
 import sailohith from "../assets/people/sailohith.png";
 import arshad from "../assets/people/arshad.jpg";
+import abhinv from "../assets/people/abhinv.jpg";
+import om from "../assets/people/om.jpg";
 const TeamInfo = [
   {
     name: "Mohammed Abdul Rahman",
@@ -41,7 +43,11 @@ const TeamInfo = [
     img: sailohith,
     role: "TREASURER",
   },
-
+          {
+    name: "Om Maynale",
+    img: om,
+    role: "WEB MASTER",
+  },
         {
     name: "Shreya",
     img: shreya,
@@ -63,7 +69,11 @@ const TeamInfo = [
     img: jeevan,
     role: "SOCIAL MEDIA LEAD",
   },
-
+          {
+    name: "Abhinav",
+    img: abhinv,
+    role: "MEMBERSHIP RECRUITMENT HEAD",
+  },
 
           {
     name: "KV Balaji",
@@ -76,6 +86,7 @@ const TeamInfo = [
     img: yashaswini,
     role: "DOCUMENTATION HEAD",
   },
+
 ];
 
 export default TeamInfo;

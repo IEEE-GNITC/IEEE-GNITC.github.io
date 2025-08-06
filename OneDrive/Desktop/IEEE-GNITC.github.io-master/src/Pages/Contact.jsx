@@ -5,114 +5,148 @@ import {
   IoLogoGithub,
   IoLogoWhatsapp,
 } from "react-icons/io";
-import { FaDiscord } from "react-icons/fa6";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { FaReddit } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaSquareXTwitter,
+  FaReddit,
+  FaInstagram,
+} from "react-icons/fa6";
 
-function Contact() {
+export default function Contact() {
+  const socialLinks = [
+    {
+      Icon: IoLogoLinkedin,
+      url: "https://linkedin.com/company/ieee-gnitc",
+      color: "hover:text-blue-400",
+    },
+    {
+      Icon: IoLogoYoutube,
+      url: "https://www.youtube.com/channel/UCrG5uoqFoiS31ZauRihrQXA",
+      color: "hover:text-red-500",
+    },
+    {
+      Icon: FaInstagram,
+      url: "https://www.instagram.com/ieee_gnitc/",
+      color: "hover:text-pink-400",
+    },
+    {
+      Icon: FaSquareXTwitter,
+      url: "https://twitter.com/IEEE_GNITC",
+      color: "hover:text-white",
+    },
+    {
+      Icon: FaReddit,
+      url: "https://www.reddit.com/r/ieee_gnitc/",
+      color: "hover:text-orange-400",
+    },
+    {
+      Icon: IoLogoWhatsapp,
+      url: "https://wa.me/918008243308",
+      color: "hover:text-green-400",
+    },
+    {
+      Icon: IoLogoGithub,
+      url: "https://github.com/IEEE-GNITC",
+      color: "hover:text-gray-300",
+    },
+    {
+      Icon: FaDiscord,
+      url: "https://discord.gg/4G3jXV7",
+      color: "hover:text-indigo-400",
+    },
+  ];
+
   return (
-    <div
-      id="contact"
-      className="bg-[#180d49] text-white py-6 px-4 md:px-20 -skew-y-3" // Reduced from py-10 to py-6
-    >
-      <div className="skew-y-3 max-w-screen-xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Column 1 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-3">Get to Know Us</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li className="ml-0">
+    <div id="contact" className="w-full px-4 py-20 md:px-20 text-white">
+      <div className="w-full max-w-screen-2xl mx-auto">
+
+        {/* Section container without background */}
+        <div className="w-full p-8 md:p-16 rounded-2xl transition-all duration-500 group">
+
+          {/* Heading */}
+          <h2 className="text-center text-4xl font-bold mb-12 font-serif tracking-wider transition-transform duration-700 hover:scale-105">
+            CONTACT US
+          </h2>
+
+          {/* Content Grid */}
+          <div className="grid md:grid-cols-3 gap-12 text-sm text-slate-300">
+
+            {/* About Section */}
+            <div className="transition-transform hover:-translate-y-1 duration-300">
+              <h3 className="text-xl font-semibold mb-4 hover:underline">
+                IEEE GNI
+              </h3>
+              <p className="mb-2">
                 <a
                   href="https://gniindia.org/"
-                  className="hover:underline"
-                >GURUNANAK INSTITUTIONS
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold underline hover:text-cyan-400"
+                >
+                  GURUNANAK INSTITUTIONS
                 </a>
-              </li>
-            </ul>
-          </div>
+              </p>
+              <p className="leading-relaxed">
+                Empowering tech enthusiasts to innovate, collaborate, and build
+                the future through IEEE.
+              </p>
+            </div>
 
-          {/* Column 2 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-3">Contact</h3>
-            <div className="space-y-3 text-gray-300 text-sm">
-              <div>
-                <p>Email:{" "}
-                  <a href="mailto:ieee_gnitc@gniindia.org" className="underline">
-                    ieee_gnitc@gniindia.org
-                  </a>
+            {/* Contact Team */}
+            <div className="transition-transform hover:-translate-y-1 duration-300">
+              <h3 className="text-xl font-semibold mb-4 hover:underline">
+                Contact Team
+              </h3>
+              <div className="mb-5">
+                <p className="font-semibold">Abhinav Erolla</p>
+                <p className="text-blue-300 text-sm">
+                  abhinaverolla7@gmail.com
                 </p>
+                <p>📞 +91 96183 86000</p>
               </div>
-
-              <div>
-                <p className="font-semibold text-white">Abhinav Erolla</p>
-                <p>Email:{" "}
-                  <a href="mailto:abhinaverolla7@gmail.com" className="underline">
-                    abhinaverolla7@gmail.com
-                  </a>
-                </p>
-                <p>Phone:{" "}
-                  <a href="tel:+919618386000" className="underline">
-                    +91 9618386000
-                  </a>
-                </p>
+              <div className="mb-5">
+                <p className="font-semibold">P R S Santosh Naidu</p>
+                <p className="text-blue-300 text-sm">prssn.raja@gmail.com</p>
+                <p>📞 +91 70753 51027</p>
               </div>
+              <p className="font-semibold">Email</p>
+              <p className="text-blue-300 text-sm">ieee_gnitc@gniindia.org</p>
+            </div>
 
-              <div>
-                <p className="font-semibold text-white">P R S Santosh Naidu</p>
-                <p>Email:{" "}
-                  <a href="mailto:prssn.raja@gmail.com" className="underline">
-                    prssn.raja@gmail.com
+            {/* Social Icons */}
+            <div className="transition-transform hover:-translate-y-1 duration-300">
+              <h3 className="text-xl font-semibold mb-4 hover:underline">
+                Connect With Us
+              </h3>
+              <div className="flex flex-wrap gap-5 mt-3">
+                {socialLinks.map(({ Icon, url, color }, index) => (
+                  <a
+                    key={index}
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`transition-all duration-300 hover:scale-125 ${color}`}
+                  >
+                    <div className="p-3 rounded-full bg-white/10 hover:bg-white/20">
+                      <Icon className="text-2xl md:text-3xl" />
+                    </div>
                   </a>
-                </p>
-                <p>Phone:{" "}
-                  <a href="tel:+917075351027" className="underline">
-                    +91 7075351027
-                  </a>
-                </p>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Column 3 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-3">Connect with Us</h3>
-            <div className="flex flex-wrap gap-4 text-3xl text-gray-400">
-              <a href="https://linkedin.com/company/ieee-gnitc" target="_blank" rel="noreferrer">
-                <IoLogoLinkedin className="hover:text-blue-400" />
-              </a>
-              <a href="https://www.youtube.com/channel/UCrG5uoqFoiS31ZauRihrQXA" target="_blank" rel="noreferrer">
-                <IoLogoYoutube className="hover:text-red-500" />
-              </a>
-              <a href="https://www.instagram.com/ieee_gnitc/" target="_blank" rel="noreferrer">
-                <FaInstagramSquare className="hover:text-pink-400" />
-              </a>
-              <a href="https://twitter.com/IEEE_GNITC" target="_blank" rel="noreferrer">
-                <FaSquareXTwitter className="hover:text-gray-300" />
-              </a>
-              <a href="https://www.reddit.com/r/ieee_gnitc/" target="_blank" rel="noreferrer">
-                <FaReddit className="hover:text-orange-500" />
-              </a>
-              <a href="https://wa.me/918008243308" target="_blank" rel="noreferrer">
-                <IoLogoWhatsapp className="hover:text-green-500" />
-              </a>
-              <a href="https://github.com/IEEE-GNITC" target="_blank" rel="noreferrer">
-                <IoLogoGithub className="hover:text-gray-300" />
-              </a>
-              <a href="https://discord.gg/4G3jXV7" target="_blank" rel="noreferrer">
-                <FaDiscord className="hover:text-indigo-500" />
-              </a>
-            </div>
+          {/* Footer */}
+          <div className="text-center mt-14 pt-6 border-t border-white/10 text-sm text-slate-400">
+            <p>
+              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-bold">
+                © {new Date().getFullYear()} IEEE GNI
+              </span>{" "}
+              — All Rights Reserved
+            </p>
           </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-6 text-center text-sm text-gray-400">
-          ALL RIGHTS RESERVED | © IEEE GNITC
         </div>
       </div>
     </div>
   );
 }
-
-export default Contact;

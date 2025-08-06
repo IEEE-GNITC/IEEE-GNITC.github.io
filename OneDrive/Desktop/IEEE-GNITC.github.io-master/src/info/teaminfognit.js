@@ -38,7 +38,7 @@ const TeamInfo = [
    {
     name: "Advait Kasturi",
     img: advaitkasturi,
-    role: "WEB MASTER",
+    role: "TECH LEAD",
   },
    {
     name: "Rishika Nagulapally",
