@@ -30,7 +30,10 @@ const events = [
 
 function FutureEventTimeLine() {
   return (
-    <div id="FutureEventTimeLine" className="text-white py-20 px-4 sm:px-10 bg-transparent">
+    <div
+      id="FutureEventTimeLine"
+      className="text-white py-20 px-4 sm:px-10 bg-transparent scroll-mt-20"
+    >
       <div className="text-center mb-14">
         <h2 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-xl animate-pulse relative inline-block">
           <span className="inline-block animate-glow transition duration-300">
