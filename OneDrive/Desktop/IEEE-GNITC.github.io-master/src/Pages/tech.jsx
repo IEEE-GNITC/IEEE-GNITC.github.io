@@ -123,5 +123,5 @@ export default function TechIgnition() {
         </motion.p>
       </div>
     </div>
-  );
+  );   
 }
