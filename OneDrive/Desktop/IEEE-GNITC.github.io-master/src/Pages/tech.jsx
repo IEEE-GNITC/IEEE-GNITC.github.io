@@ -1,6 +1,6 @@
 // src/Pages/events/main/TechIgnition.jsx
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import img1 from "../assets/techignition/1.jpg";
@@ -121,6 +121,22 @@ export default function TechIgnition() {
           Whether you’re here to compete or to witness the next wave of tech brilliance,  
           Tech-Ignition 2.0 promises an unforgettable experience for all.
         </motion.p>
+      </div>
+
+      {/* Register Now Button */}
+      <div className="max-w-md mx-auto mt-16 px-6">
+        <a
+          href="https://konfhub.com/tech-ignition-20-c7a586ae"  // Replace with your actual registration link
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full inline-flex justify-center items-center gap-2 px-10 py-4 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 text-white font-extrabold rounded-full text-lg hover:scale-105 transition transform shadow-[0_0_15px_rgba(219,39,119,0.8)] hover:shadow-[0_0_25px_rgba(58,99,212,0.9)]"
+          style={{
+            boxShadow:
+              "0 0 20px rgba(219,39,119,0.8), 0 0 30px rgba(58,99,212,0.9)",
+          }}
+        >
+          Register Now <ArrowRight size={24} />
+        </a>
       </div>
     </div>
   );

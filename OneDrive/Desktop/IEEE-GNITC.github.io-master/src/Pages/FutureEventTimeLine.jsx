@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Step 1: Import
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -26,9 +27,13 @@ const events = [
   { date: "22-04-2024", title: "IEEE PES Day Celebrations", subtitle: "By Power & Energy Society", icon: ieeepes },
   { date: "03/05/2025", title: "Virtual Vista 2.0", subtitle: "By Computer Society", icon: computer_society },
   { date: "13-06-2025", title: "Project Expo", subtitle: "By Power & Energy Society", icon: ieeepes },
+  { date: "26/07/2025", title: "Orientation Day", subtitle: "By IEEE STUDENT BRANCH", icon: IEEE },
+  { date: "23-8-2025", title: "TECH IGNITION - 2.0", subtitle: " By IEEE STUDENT BRANCH", icon: IEEE },
 ];
 
 function FutureEventTimeLine() {
+  const navigate = useNavigate(); // ✅ Step 2: useNavigate hook
+
   return (
     <div
       id="FutureEventTimeLine"
@@ -46,16 +51,30 @@ function FutureEventTimeLine() {
         {events.map((event, index) => {
           const [day, month, year] = event.date.split(/[/-]/);
 
+          // ✅ Step 3: Define conditional click navigation
+          const handleClick = () => {
+            if (event.title.toLowerCase().includes("tech ignition")) {
+              navigate("/tech");
+            } else if (event.title.toLowerCase().includes("orientation")) {
+              navigate("/orientation");
+            }
+          };
+
+          const isClickable =
+            event.title.toLowerCase().includes("tech ignition") ||
+            event.title.toLowerCase().includes("orientation");
+
           return (
             <VerticalTimelineElement
               key={index}
               contentStyle={{
-                background: "#000000", // solid black background for event content
+                background: "#000000",
                 color: "#fff",
                 border: "1px solid #a855f7",
                 borderRadius: "16px",
                 boxShadow: "0 0 20px rgba(168, 85, 247, 0.3)",
                 transition: "all 0.3s ease-in-out",
+                cursor: isClickable ? "pointer" : "default", // ✅ cursor
               }}
               contentArrowStyle={{ borderRight: "7px solid #a855f7" }}
               iconStyle={{
@@ -77,14 +96,21 @@ function FutureEventTimeLine() {
                 </div>
               }
             >
-              <div className="relative group">
-                {/* Date badge with colorful gradient background */}
+              <div
+                className={`relative group ${isClickable ? "hover:scale-[1.02] transition-transform duration-300" : ""}`}
+                onClick={isClickable ? handleClick : undefined}
+              >
+                {/* Date badge */}
                 <div
                   className="absolute -top-7 -right-7 px-5 py-1 text-xs font-semibold rounded-full
                   bg-gradient-to-r from-purple-700 via-pink-600 to-indigo-700
                   shadow-lg text-white ring-1 ring-white/20
                   transition-transform duration-300 group-hover:scale-110"
-                  style={{ userSelect: "none", minWidth: "72px", textAlign: "center" }}
+                  style={{
+                    userSelect: "none",
+                    minWidth: "72px",
+                    textAlign: "center",
+                  }}
                 >
                   {`${day}/${month}/${year}`}
                 </div>

@@ -1,9 +1,10 @@
 import React from "react";
 import { CalendarDays, MapPin, ArrowRight, Info } from "lucide-react";
-import techImg from "../assets/tech.jpg"; // Adjust path/extension if needed
+import techImg from "../assets/tech.jpg";
 import { Link } from "react-router-dom";
-
+import orientation from "../assets/orientation.jpg";
 const futureEvents = [
+
   {
     id: 1,
     title: "TECH-IGNITION 2.0",
@@ -15,6 +16,18 @@ const futureEvents = [
     img: techImg,
     registrationLink: "https://konfhub.com/tech-ignition-20-c7a586ae",
     detailsPage: "/tech",
+  },
+    {
+    id: 2,
+    title: "IEEE ORIENTATION DAY",
+    date: "26 July 2025",
+    location: "Ratan Naval Tata AUDITORIUM- GNI",
+    description:
+      "The IEEE GNI Orientation Day is a welcoming event for new students, offering an introduction to the IEEE Student Branch’s vision, mission, and opportunities. It’s a chance to meet the team, discover upcoming events, explore various technical domains!",
+    tag: "Kickstart Your IEEE Journey",
+    img: orientation,
+    registrationLink: "https://konfhub.com/EXPIRED",
+    detailsPage: "/orientation",
   },
 ];
 
@@ -57,7 +70,7 @@ export default function Events() {
 
             {/* Content */}
             <div className="px-6 pb-6 pt-4 bg-black/60 backdrop-blur-md rounded-b-3xl flex flex-col justify-between min-h-[320px]">
-              {/* Tag - centered text */}
+              {/* Tag */}
               <span className="inline-flex items-center justify-center mb-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white text-[10px] md:text-xs font-semibold px-2 py-[2px] rounded-full select-none">
                 {event.tag}
               </span>
@@ -97,7 +110,7 @@ export default function Events() {
                 to={event.detailsPage}
                 className="flex items-center justify-center gap-2 w-full py-3 px-6 mt-4 rounded-full font-semibold text-gray-200 transition-colors duration-300 bg-gradient-to-r from-gray-700 to-gray-600 hover:text-white hover:shadow-[0_0_20px_rgba(219,39,119,0.8)] hover:bg-gradient-to-r hover:from-pink-600 hover:via-purple-700 hover:to-cyan-600 hover:font-extrabold hover:animate-glowPulse"
               >
-                TECH-IGNITION <Info size={20} />
+                {event.title} <Info size={20} />
               </Link>
             </div>
           </div>
@@ -132,14 +145,6 @@ export default function Events() {
           animation: gradientShift 5s ease infinite;
         }
 
-        @keyframes bounceSlow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-4px); }
-        }
-        .animate-bounceSlow {
-          animation: bounceSlow 2.5s infinite;
-        }
-
         @keyframes glowPulse {
           0%, 100% {
             box-shadow: 0 0 6px 2px rgba(219, 39, 119, 0.6);
@@ -152,7 +157,6 @@ export default function Events() {
           animation: glowPulse 3s ease-in-out infinite;
         }
 
-        /* Gradient text for event title hover */
         .text-gradientPinkPurple {
           background: linear-gradient(90deg, #ec4899, #8b5cf6);
           -webkit-background-clip: text;

@@ -22,25 +22,26 @@ function Events() {
     navigate("/tech");
   };
 
+  const handleOrientationClick = () => {
+    navigate("/orientation");
+  };
+
   return (
     <div
       id="events"
-      className="px-4 py-16 sm:py-20 md:py-24 backdrop-blur-xl bg-gradient-to-br from-black/50 via-purple-900/50 to-cyan-900/50 text-white min-h-screen"
-      // Made background transparency stronger by changing from /70 to /50
+      className="px-4 py-16 sm:py-20 md:py-24 backdrop-blur-xl bg-transparent text-white min-h-screen"
     >
       {/* Section Heading */}
       <div className="text-center mb-10 sm:mb-14 animate-fadeIn">
         <h2
           className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide transition-transform duration-700 animate-pulse hover:scale-110 select-none"
           style={{ fontFamily: "'Poppins', sans-serif" }}
-          // Slightly smaller font for smaller screens, crisp font family for modern look
         >
           Events 🎉
         </h2>
         <p
           className="text-sm sm:text-base md:text-lg text-white/75 mt-3 font-medium animate-fadeInUp max-w-xl mx-auto leading-relaxed"
           style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.02em" }}
-          // Better line height and spacing for readability on mobile
         >
           Explore our latest happenings and join the excitement!
         </p>
@@ -77,9 +78,39 @@ function Events() {
         </button>
       </div>
 
+      {/* Orientation Day Banner */}
+      <div
+        className="w-full mb-14 rounded-3xl p-8 shadow-[0_8px_30px_rgb(6,182,212,0.6)] backdrop-blur-lg
+        bg-gradient-to-r from-cyan-600 via-indigo-500 to-purple-600
+        flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.05] animate-fadeInUp"
+      >
+        <h3
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-5 text-white tracking-wide drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          Orientation Day
+        </h3>
+        <p
+          className="max-w-3xl text-white/95 text-base sm:text-lg mb-8 leading-relaxed font-semibold drop-shadow-md"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          Kickstart your journey with IEEE at GNI! Orientation Day is designed to welcome new members,
+          ignite curiosity, and introduce you to a world of innovation, leadership, and technology.
+          Discover the community, meet the team, and take your first step into a future of limitless opportunities.
+        </p>
+        <button
+          onClick={handleOrientationClick}
+          className="px-10 py-4 bg-white/20 border border-white/40 rounded-full text-white font-bold tracking-wider
+          hover:bg-white/40 hover:scale-110 transition-transform duration-300 shadow-lg animate-bounce active:scale-95"
+          aria-label="Navigate to Orientation Page"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          ORIENTATION DAY
+        </button>
+      </div>
+
       {/* First Carousel + Text Section */}
       <div className="flex flex-col md:flex-row gap-10 md:gap-12 items-start justify-center animate-slideIn">
-        {/* Carousel */}
         <div className="w-full md:w-2/5 flex justify-center">
           <div
             className="w-full border border-white/25 backdrop-blur-xl rounded-3xl p-5
@@ -133,12 +164,8 @@ function Events() {
             Distinguished Guests:
           </h3>
           <ul className="text-sm sm:text-base list-disc list-inside space-y-1 font-semibold text-white/90">
-            <li>
-              <strong>Chief Guest:</strong> Dr. Krithika Sutrave
-            </li>
-            <li>
-              <strong>Guest of Honor:</strong> Dr. Mousmi Ajay Chaurasia
-            </li>
+            <li><strong>Chief Guest:</strong> Dr. Krithika Sutrave</li>
+            <li><strong>Guest of Honor:</strong> Dr. Mousmi Ajay Chaurasia</li>
             <li>Dr. M.A. Jabbar</li>
             <li>Mr. G. Kapil Kumar</li>
             <li>Mr. U. Arjun</li>
@@ -208,4 +235,3 @@ function Events() {
 }
 
 export default Events;
-  
