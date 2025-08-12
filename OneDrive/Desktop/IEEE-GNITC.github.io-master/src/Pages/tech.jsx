@@ -139,5 +139,5 @@ export default function TechIgnition() {
         </a>
       </div>
     </div>
-  );
+  );   
 }
