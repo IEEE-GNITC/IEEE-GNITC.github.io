@@ -18,28 +18,38 @@ function Societies() {
   ];
 
   return (
-    <div id="societies" className="px-4 py-16 md:px-20 bg-transparent text-white">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-white animate-pulse drop-shadow-lg">
-          <FaLayerGroup className="inline-block mr-2 mb-1 text-pink-400" /> Our Societies
+    <div id="societies" className="px-4 py-16 md:px-20 text-white">
+      <div className="text-center mb-12 max-w-3xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white relative inline-block pb-2 animate-pulse">
+          <FaLayerGroup className="inline-block mr-3 mb-1 text-pink-400" />
+          Our Societies
+          <span
+            className="block h-1 w-24 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 rounded-full mt-2 mx-auto"
+            aria-hidden="true"
+          />
         </h2>
-        <p className="text-gray-300 mt-2 max-w-2xl mx-auto text-sm md:text-base">
+        <p className="text-gray-300 mt-4 text-sm md:text-base font-light">
           Explore the diverse technical societies we are proud to represent.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 place-items-center">
         {societies.map((society, index) => (
           <div
             key={index}
-            className="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-md border border-slate-500 hover:scale-[1.05] transition-transform duration-300 hover:shadow-lg w-64 h-64 flex flex-col items-center justify-center text-center"
+            className="w-72 h-72 bg-white/5 backdrop-blur-lg rounded-3xl border border-transparent shadow-lg flex flex-col items-center justify-center text-center p-6
+              transition-transform duration-300 ease-in-out
+              hover:scale-105 hover:shadow-[0_15px_30px_rgba(255,105,180,0.4)]
+              hover:border-pink-400"
+            aria-label={society.name}
           >
             <img
               src={society.img}
               alt={society.name}
-              className="w-28 h-28 sm:w-32 sm:h-32 object-contain rounded-full mb-4"
+              className="w-32 h-32 object-contain rounded-full mb-5 drop-shadow-md"
+              loading="lazy"
             />
-            <h3 className="text-lg font-semibold text-white">{society.name}</h3>
+            <h3 className="text-xl font-semibold text-white tracking-wide">{society.name}</h3>
           </div>
         ))}
       </div>

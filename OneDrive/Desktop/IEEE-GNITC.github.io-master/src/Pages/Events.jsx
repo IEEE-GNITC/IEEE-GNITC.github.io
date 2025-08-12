@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import EventInfo, { moreInfo1, moreInfo2 } from "../info/events";
 import Autoplay from "embla-carousel-autoplay";
 import EventImageItem1 from "@/components/Items/EventImageItem1";
@@ -15,26 +16,76 @@ import {
 import CardItem from "@/components/Items/CardItem";
 
 function Events() {
+  const navigate = useNavigate();
+
+  const handleTechIgnitionClick = () => {
+    navigate("/tech");
+  };
+
   return (
     <div
       id="events"
-      className="px-4 py-12 backdrop-blur-lg bg-black/30 text-white"
+      className="px-4 py-16 sm:py-20 md:py-24 backdrop-blur-xl bg-gradient-to-br from-black/50 via-purple-900/50 to-cyan-900/50 text-white min-h-screen"
+      // Made background transparency stronger by changing from /70 to /50
     >
       {/* Section Heading */}
-      <div className="text-center mb-8 animate-fadeIn">
-        <h2 className="text-5xl md:text-6xl font-extrabold transition-all duration-700 animate-pulse hover:scale-105">
-          🎉 Events
+      <div className="text-center mb-10 sm:mb-14 animate-fadeIn">
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide transition-transform duration-700 animate-pulse hover:scale-110 select-none"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+          // Slightly smaller font for smaller screens, crisp font family for modern look
+        >
+          Events 🎉
         </h2>
-        <p className="text-lg md:text-xl text-white/80 mt-2 animate-fadeInUp">
-          📅 2024
+        <p
+          className="text-sm sm:text-base md:text-lg text-white/75 mt-3 font-medium animate-fadeInUp max-w-xl mx-auto leading-relaxed"
+          style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.02em" }}
+          // Better line height and spacing for readability on mobile
+        >
+          Explore our latest happenings and join the excitement!
         </p>
       </div>
 
+      {/* Tech Ignition Full Width Banner */}
+      <div
+        className="w-full mb-14 rounded-3xl p-8 shadow-[0_8px_30px_rgb(128,90,213,0.6)] backdrop-blur-lg bg-gradient-to-r from-purple-700 via-pink-600 to-cyan-500
+        flex flex-col items-center text-center transition-transform duration-300 hover:scale-[1.05]"
+      >
+        <h3
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-5 text-white tracking-wide drop-shadow-[0_4px_6px_rgba(0,0,0,0.7)]"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          Tech Ignition
+        </h3>
+        <p
+          className="max-w-3xl text-white/95 text-base sm:text-lg mb-8 leading-relaxed font-semibold drop-shadow-md"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          The IEEE Student Branch – GNI proudly presents Tech Ignition, a
+          technical and fun fest aimed at inspiring innovation, technical
+          excellence, and creativity while fostering enjoyment and
+          collaboration among students from diverse disciplines.
+        </p>
+        <button
+          onClick={handleTechIgnitionClick}
+          className="px-10 py-4 bg-white/20 border border-white/40 rounded-full text-white font-bold tracking-wider
+          hover:bg-white/40 hover:scale-110 transition-transform duration-300 shadow-lg animate-bounce active:scale-95"
+          aria-label="Navigate to Tech Ignition"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
+        >
+          TECH-IGNITION
+        </button>
+      </div>
+
       {/* First Carousel + Text Section */}
-      <div className="flex flex-col md:flex-row gap-8 items-center justify-center animate-slideIn">
+      <div className="flex flex-col md:flex-row gap-10 md:gap-12 items-start justify-center animate-slideIn">
         {/* Carousel */}
-        <div className="w-full md:w-3/5 flex justify-center">
-          <div className="w-full border border-white/20 backdrop-blur-lg rounded-3xl p-4 bg-gradient-to-br from-white/10 to-black/30 shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+        <div className="w-full md:w-2/5 flex justify-center">
+          <div
+            className="w-full border border-white/25 backdrop-blur-xl rounded-3xl p-5
+            bg-gradient-to-br from-white/5 to-black/25 shadow-[0_8px_30px_rgba(255,255,255,0.05)]
+            transition-all duration-400 hover:scale-[1.04]"
+          >
             <Carousel
               className="w-full"
               opts={{ align: "center", loop: true }}
@@ -43,12 +94,13 @@ function Events() {
               <CarouselContent>
                 {moreInfo1.map((data, index) => (
                   <CarouselItem
-                    className="basis-full px-2 flex justify-center"
+                    className="basis-full px-3 flex justify-center"
                     key={index}
                   >
                     <div
-                      className="rounded-2xl overflow-hidden max-h-[450px] w-full md:w-[90%] transform transition-transform duration-700 hover:scale-105 animate-fadeInUp shadow-xl animate-fadeInUp animate-delay-500"
-                      style={{ animationDelay: `${index * 200}ms` }}
+                      className="rounded-3xl overflow-hidden max-h-[450px] w-full md:w-[90%]
+                      transform transition-transform duration-700 hover:scale-110 animate-fadeInUp shadow-2xl"
+                      style={{ animationDelay: `${index * 150}ms` }}
                     >
                       <EventImageItem1 img={data.img} />
                     </div>
@@ -60,14 +112,33 @@ function Events() {
         </div>
 
         {/* Text Info */}
-        <div className="w-full md:w-2/5 bg-gradient-to-br from-white/10 to-black/30 text-white rounded-3xl p-6 shadow-2xl backdrop-blur-md max-h-[600px] overflow-y-auto transition-all duration-300 hover:scale-[1.02]">
-          <p className="text-sm md:text-base leading-relaxed text-justify mb-4">
-            On June 5, 2024, the Valedictory Function was held, where cash prizes and certificates were awarded to the winners. The top prize of Rs. 21,100 was awarded to the team from Anurag University, Telangana, comprising P. Karthik Rao, B. Venu Gopal, P. Sahithi Reddy, and V. Charitha Reddy. The second prize of Rs. 11,100 went to the team from Rajalakshmi Engineering College, Tamil Nadu, including Shaun Orlando M, Shivani S. R., and Sarathi. The third prize of Rs. 5,500 was given to the team from Acropolis Institute of Technology and Research, Madhya Pradesh.
+        <div
+          className="w-full md:w-2/5 bg-gradient-to-br from-white/5 to-black/25 text-white rounded-3xl p-7
+          shadow-[0_8px_30px_rgba(0,0,0,0.7)] backdrop-blur-lg max-h-[600px] overflow-y-auto
+          transition-transform duration-400 hover:scale-[1.04]"
+          style={{ WebkitOverflowScrolling: "touch", fontFamily: "'Inter', sans-serif" }}
+        >
+          <p className="text-sm sm:text-base leading-relaxed text-justify mb-6 font-medium tracking-wide">
+            On June 5, 2024, the Valedictory Function was held, where cash prizes
+            and certificates were awarded to the winners. The top prize of Rs.
+            21,100 was awarded to the team from Anurag University, Telangana,
+            comprising P. Karthik Rao, B. Venu Gopal, P. Sahithi Reddy, and V.
+            Charitha Reddy. The second prize of Rs. 11,100 went to the team from
+            Rajalakshmi Engineering College, Tamil Nadu, including Shaun Orlando
+            M, Shivani S. R., and Sarathi. The third prize of Rs. 5,500 was given
+            to the team from Acropolis Institute of Technology and Research,
+            Madhya Pradesh.
           </p>
-          <h3 className="font-bold text-lg mb-2">Distinguished Guests:</h3>
-          <ul className="text-sm list-disc list-inside space-y-1">
-            <li><strong>Chief Guest:</strong> Dr. Krithika Sutrave</li>
-            <li><strong>Guest of Honor:</strong> Dr. Mousmi Ajay Chaurasia</li>
+          <h3 className="font-bold text-xl mb-3 tracking-wide text-white drop-shadow-md" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            Distinguished Guests:
+          </h3>
+          <ul className="text-sm sm:text-base list-disc list-inside space-y-1 font-semibold text-white/90">
+            <li>
+              <strong>Chief Guest:</strong> Dr. Krithika Sutrave
+            </li>
+            <li>
+              <strong>Guest of Honor:</strong> Dr. Mousmi Ajay Chaurasia
+            </li>
             <li>Dr. M.A. Jabbar</li>
             <li>Mr. G. Kapil Kumar</li>
             <li>Mr. U. Arjun</li>
@@ -82,8 +153,12 @@ function Events() {
       </div>
 
       {/* Second Carousel */}
-      <div className="mt-16 mb-10 animate-fadeInUp">
-        <div className="w-full border border-white/20 backdrop-blur-md rounded-2xl p-3 bg-black/20 shadow-2xl transition-all duration-300 hover:scale-[1.01]">
+      <div className="mt-20 mb-12 animate-fadeInUp">
+        <div
+          className="w-full border border-white/25 backdrop-blur-xl rounded-3xl p-4
+          bg-black/20 shadow-[0_8px_30px_rgba(255,255,255,0.1)]
+          transition-all duration-300 hover:scale-[1.02]"
+        >
           <Carousel
             className="w-full"
             opts={{ align: "start", loop: true }}
@@ -92,10 +167,10 @@ function Events() {
             <CarouselContent>
               {moreInfo2.map((data, index) => (
                 <CarouselItem
-                  className="basis-full md:basis-1/3 px-2"
+                  className="basis-full md:basis-1/3 px-3"
                   key={index}
                 >
-                  <div className="rounded-xl overflow-hidden max-h-[450px] w-full transition-transform duration-500 hover:scale-105">
+                  <div className="rounded-2xl overflow-hidden max-h-[450px] w-full transition-transform duration-500 hover:scale-110 shadow-lg">
                     <EventImageItem2 img={data.img} />
                   </div>
                 </CarouselItem>
@@ -106,11 +181,11 @@ function Events() {
       </div>
 
       {/* Card Section */}
-      <div className="mt-10 animate-fadeIn">
+      <div className="mt-14 animate-fadeIn">
         <Carousel opts={{ align: "start", loop: true }}>
           <CarouselContent>
             {EventInfo.map((eve) => (
-              <CarouselItem className="m-2" key={eve.id}>
+              <CarouselItem className="m-3" key={eve.id}>
                 <CardItem
                   cardImg={eve.img}
                   cardContent={eve.content}
@@ -122,9 +197,9 @@ function Events() {
             ))}
           </CarouselContent>
 
-          <div className="flex justify-between items-center mt-6">
-            <CarouselPrevious className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-3 hover:scale-110 transition-transform" />
-            <CarouselNext className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-3 hover:scale-110 transition-transform" />
+          <div className="flex justify-between items-center mt-8">
+            <CarouselPrevious className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-4 hover:scale-125 transition-transform shadow-lg" />
+            <CarouselNext className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-full p-4 hover:scale-125 transition-transform shadow-lg" />
           </div>
         </Carousel>
       </div>
@@ -133,3 +208,4 @@ function Events() {
 }
 
 export default Events;
+  

@@ -50,12 +50,11 @@ function FutureEventTimeLine() {
             <VerticalTimelineElement
               key={index}
               contentStyle={{
-                background: "rgba(30, 27, 75, 0.2)",
+                background: "#000000", // solid black background for event content
                 color: "#fff",
                 border: "1px solid #a855f7",
                 borderRadius: "16px",
-                boxShadow: "0 0 20px rgba(168, 85, 247, 0.25)",
-                backdropFilter: "blur(8px)",
+                boxShadow: "0 0 20px rgba(168, 85, 247, 0.3)",
                 transition: "all 0.3s ease-in-out",
               }}
               contentArrowStyle={{ borderRight: "7px solid #a855f7" }}
@@ -79,11 +78,18 @@ function FutureEventTimeLine() {
               }
             >
               <div className="relative group">
-                <div className="absolute -top-6 -right-6 bg-indigo-600 text-white text-xs rounded-full px-3 py-1 shadow-lg ring-2 ring-white/10 group-hover:scale-110 transition-transform duration-300">
+                {/* Date badge with colorful gradient background */}
+                <div
+                  className="absolute -top-7 -right-7 px-5 py-1 text-xs font-semibold rounded-full
+                  bg-gradient-to-r from-purple-700 via-pink-600 to-indigo-700
+                  shadow-lg text-white ring-1 ring-white/20
+                  transition-transform duration-300 group-hover:scale-110"
+                  style={{ userSelect: "none", minWidth: "72px", textAlign: "center" }}
+                >
                   {`${day}/${month}/${year}`}
                 </div>
 
-                <div className="p-2 transform transition-transform duration-500 hover:scale-105 hover:rotate-1">
+                <div className="p-3 transform transition-transform duration-500 hover:scale-105 hover:rotate-1">
                   <h3 className="text-xl font-bold text-white">
                     {event.title}
                   </h3>

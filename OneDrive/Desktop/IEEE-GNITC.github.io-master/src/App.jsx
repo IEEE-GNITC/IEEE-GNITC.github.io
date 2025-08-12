@@ -22,6 +22,7 @@ import AIMastery from './Pages/events/computersociety/AIMastery';
 import TechIgnition from './Pages/events/main/TechIgnition';
 import Team from './Pages/Team';
 import PreviousTeam from './Pages/PreviousTeam';
+import Tech from './Pages/tech'; // ✅ NEW import for the Tech.jsx page
 import bgVideo from './assets/bg.mp4';
 
 const App1 = () => {
@@ -68,6 +69,9 @@ const App = () => {
             <Route path="/events/TechIgnition" element={<TechIgnition />} />
             <Route path="/events/AIMastery" element={<AIMastery />} />
             <Route path="/PreviousTeam" element={<PreviousTeam />} />
+
+            {/* ✅ New Route for tech.jsx page */}
+            <Route path="/tech" element={<Tech />} />
           </Routes>
         </Router>
       </div>

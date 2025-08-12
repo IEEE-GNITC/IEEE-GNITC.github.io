@@ -27,18 +27,70 @@ export default function Nav() {
     setIsOpen(false);
   };
 
-  const navItem = (label, target, index = 0) => (
-    <span
-      onClick={() => handleNavClick(target)}
-      className="text-sm font-medium text-center hover:text-blue-400 transition duration-300 opacity-0 animate-fadeInUp"
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      {label}
-    </span>
-  );
+  const navItem = (label, target, index = 0, isMobile = false) => {
+    const baseClass = "text-sm font-medium cursor-pointer transition duration-300";
+    const hoverClass = "hover:text-cyan-400 hover:scale-105";
+
+    if (isMobile) {
+      return (
+        <span
+          key={label}
+          onClick={() => handleNavClick(target)}
+          className={`${baseClass} text-center text-slate-200 opacity-0 animate-fadeInUp`}
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
+          {label}
+        </span>
+      );
+    }
+
+    // Desktop nav items with slide up + bounce animation & staggered delay
+    return (
+      <span
+        key={label}
+        onClick={() => handleNavClick(target)}
+        className={`${baseClass} text-slate-200 nav-desktop-item ${hoverClass}`}
+        style={{ animationDelay: `${index * 100}ms` }}
+      >
+        {label}
+      </span>
+    );
+  };
 
   return (
-    <div className="fixed top-0 w-full z-50 bg-transparent backdrop-blur-md border-b border-gray-700 shadow-md">
+    <div className="fixed top-0 w-full z-50 bg-transparent border-b border-gray-700 shadow-md transition-colors duration-500">
+      <style>{`
+        @keyframes slideUpBounce {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          60% {
+            opacity: 1;
+            transform: translateY(-10px);
+          }
+          80% {
+            transform: translateY(5px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .nav-desktop-item {
+          opacity: 0;
+          animation-name: slideUpBounce;
+          animation-duration: 600ms;
+          animation-fill-mode: forwards;
+          animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          display: inline-block;
+        }
+        .nav-desktop-item:hover {
+          transform: scale(1.1);
+          transition: transform 0.3s ease;
+        }
+      `}</style>
+
       <div className="flex items-center justify-between px-4 py-2 md:px-10 md:h-20">
         {/* Logo */}
         <div
@@ -56,17 +108,23 @@ export default function Nav() {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex space-x-6 text-slate-200 font-medium items-center">
-          {navItem("About Us", "aboutus")}
-          {navItem("Societies", "societies")}
-          {navItem("Events", "events")}
-          {navItem("Top Leadership", "TopLeadership")}
-          {navItem("Faculty Advisors", "advisors")}
-          {navItem("Our Team", "team")}
-          {navItem("Contact", "contact")}
+        <div className="hidden md:flex space-x-6 font-medium items-center">
+          {navItem("About Us", "aboutus", 0)}
+          {navItem("Societies", "societies", 1)}
+          {navItem("Events", "events", 2)}
+          <RouterLink
+            to="/events"
+            className="cursor-pointer text-slate-200 hover:text-cyan-400 transition-all duration-300"
+          >
+            Explore Events
+          </RouterLink>
+          {navItem("Top Leadership", "TopLeadership", 3)}
+          {navItem("Faculty Advisors", "advisors", 4)}
+          {navItem("Our Team", "team", 5)}
+          {navItem("Contact", "contact", 6)}
           <RouterLink
             to="/PreviousTeam"
-            className="cursor-pointer transition-all duration-300 hover:text-blue-400"
+            className="cursor-pointer text-slate-200 hover:text-cyan-400 transition-all duration-300"
           >
             Previous Team
           </RouterLink>
@@ -74,7 +132,7 @@ export default function Nav() {
             href="https://hackarena.ieeegnitc.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-pointer transition-all duration-300 hover:text-blue-400"
+            className="cursor-pointer text-slate-200 hover:text-cyan-400 transition-all duration-300"
           >
             HackArena
           </a>
@@ -82,7 +140,7 @@ export default function Nav() {
             href="https://www.ieee.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className="cursor-pointer transition-all duration-300 hover:text-blue-400"
+            className="cursor-pointer text-slate-200 hover:text-cyan-400 transition-all duration-300"
           >
             IEEE.org
           </a>
@@ -96,62 +154,69 @@ export default function Nav() {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Menu with Background Overlay */}
       {isOpen && (
-        <div className="relative md:hidden mx-4 mt-2 mb-4 rounded-lg overflow-hidden animate-slideDown transition-all duration-300">
-          {/* Sparkle animation remains, but no background */}
-          <div className="absolute inset-0 pointer-events-none z-0">
-            {[...Array(25)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-[2px] h-[2px] bg-white rounded-full opacity-40 animate-softTwinkle"
-                style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${i * 150}ms`,
-                  animationDuration: `${2 + Math.random() * 3}s`,
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="relative flex flex-col items-center text-slate-200 text-sm font-medium py-4 space-y-4 z-10">
-            {navItem("About Us", "aboutus", 0)}
-            {navItem("Societies", "societies", 1)}
-            {navItem("Events", "events", 2)}
-            {navItem("Top Leadership", "topleadership", 3)}
-            {navItem("Faculty Advisors", "advisors", 4)}
-            {navItem("Our Team", "team", 5)}
-            {navItem("Contact", "contact", 6)}
-            <RouterLink
-              to="/PreviousTeam"
-              onClick={closeMenu}
-              className="text-center text-sm font-medium hover:text-blue-400 transition duration-300 opacity-0 animate-fadeInUp"
-              style={{ animationDelay: `700ms` }}
-            >
-              Previous Team
-            </RouterLink>
-            <a
-              href="https://hackarena.ieeegnitc.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center text-sm font-medium hover:text-blue-400 transition duration-300 opacity-0 animate-fadeInUp"
-              style={{ animationDelay: `800ms` }}
-            >
-              HackArena
-            </a>
-            <a
-              href="https://www.ieee.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center text-sm font-medium hover:text-blue-400 transition duration-300 opacity-0 animate-fadeInUp"
-              style={{ animationDelay: `900ms` }}
-            >
-              IEEE.org
-            </a>
-          </div>
-        </div>
+        <div
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-500"
+          onClick={closeMenu}
+        />
       )}
+
+      <div
+        className={`md:hidden fixed top-[70px] left-1/2 -translate-x-1/2 w-[90%] rounded-xl overflow-hidden transform transition-all duration-500 z-50 shadow-lg ${
+          isOpen
+            ? "opacity-100 scale-100 translate-y-0"
+            : "opacity-0 scale-95 -translate-y-5 pointer-events-none"
+        }`}
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95))",
+        }}
+      >
+        <div className="relative flex flex-col items-center text-slate-200 text-sm font-medium py-4 space-y-4">
+          {navItem("About Us", "aboutus", 0, true)}
+          {navItem("Societies", "societies", 1, true)}
+          {navItem("Events", "events", 2, true)}
+          <RouterLink
+            to="/events"
+            onClick={closeMenu}
+            className="text-center text-sm font-medium hover:text-cyan-400 transition duration-300 opacity-0 animate-fadeInUp"
+            style={{ animationDelay: `350ms` }}
+          >
+            Explore Events
+          </RouterLink>
+          {navItem("Top Leadership", "topleadership", 3, true)}
+          {navItem("Faculty Advisors", "advisors", 4, true)}
+          {navItem("Our Team", "team", 5, true)}
+          {navItem("Contact", "contact", 6, true)}
+          <RouterLink
+            to="/PreviousTeam"
+            onClick={closeMenu}
+            className="text-center text-sm font-medium hover:text-cyan-400 transition duration-300 opacity-0 animate-fadeInUp"
+            style={{ animationDelay: `700ms` }}
+          >
+            Previous Team
+          </RouterLink>
+          <a
+            href="https://hackarena.ieeegnitc.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center text-sm font-medium hover:text-cyan-400 transition duration-300 opacity-0 animate-fadeInUp"
+            style={{ animationDelay: `800ms` }}
+          >
+            HackArena
+          </a>
+          <a
+            href="https://www.ieee.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center text-sm font-medium hover:text-cyan-400 transition duration-300 opacity-0 animate-fadeInUp"
+            style={{ animationDelay: `900ms` }}
+          >
+            IEEE.org
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

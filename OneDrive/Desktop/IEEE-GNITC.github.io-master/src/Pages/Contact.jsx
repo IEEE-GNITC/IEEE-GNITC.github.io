@@ -16,7 +16,7 @@ export default function Contact() {
   const socialLinks = [
     { Icon: IoLogoLinkedin, url: "https://linkedin.com/company/ieee-gnitc", color: "#0077B5" },
     { Icon: IoLogoYoutube, url: "https://www.youtube.com/channel/UCrG5uoqFoiS31ZauRihrQXA", color: "#FF0000" },
-    { Icon: FaInstagram, url: "https://www.instagram.com/ieee_gnitc/", color: "#E4405F" },
+    { Icon: FaInstagram, url: "https://www.instagram.com/ieee_gni/", color: "#E4405F" },
     { Icon: FaSquareXTwitter, url: "https://twitter.com/IEEE_GNITC", color: "#1DA1F2" },
     { Icon: FaReddit, url: "https://www.reddit.com/r/ieee_gnitc/", color: "#FF4500" },
     { Icon: IoLogoWhatsapp, url: "https://wa.me/918008243308", color: "#25D366" },
