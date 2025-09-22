@@ -173,10 +173,8 @@ Error generating stack: `+s.message+`
           animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); 
           display: inline-block; 
         }
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(10px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
+        .nav-desktop-item:hover { transform: scale(1.1); transition: transform 0.3s ease; }
+        @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-fadeInUp { animation: fadeInUp 0.4s ease forwards; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
